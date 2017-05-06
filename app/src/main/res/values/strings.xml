@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LEDs\' pad</string>
+    <string name="main_choose_sudo">PlayDoku</string>
+    <string name="main_choose_snake">Giant Snake</string>
+    <string name="main_choose_space_invaders">LEDs\' Invaders</string>
+    <string name="main_connect">Connect to wall</string>
+    <string name="ok_button">OK</string>
+    <string name="back_button">Back</string>
+    <string name="replay">Reprendre</string>
+    <string name="go_to_main">Accueil</string>
+</resources>

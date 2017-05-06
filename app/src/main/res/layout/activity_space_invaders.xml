@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.example.adelin.ledspad.SpaceInvaders">>
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|center_horizontal"
+        app:srcCompat="@drawable/croix_directionnelle" />
+
+    <ImageView
+        android:id="@+id/pause"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_gravity="bottom"
+        android:translationX="@dimen/margin_pause"
+        app:srcCompat="@drawable/button_pause" />
+
+    <ImageView
+        android:id="@+id/shoot"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_gravity="right|center_vertical"
+        android:translationX="@dimen/margin_pause_neg"
+        app:srcCompat="@drawable/button" />
+
+    <Button
+        android:id="@+id/left"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_gravity="center_vertical"
+        android:onClick="goLeft"
+        android:translationX="@dimen/activity_margin_pos" />
+
+    <Button
+        android:id="@+id/right"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_gravity="center_vertical|right"
+        android:background="@null"
+        android:onClick="goRight"
+        android:translationX="@dimen/activity_margin_neg" />
+
+    <Button
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_gravity="bottom"
+        android:background="@null"
+        android:onClick="pause"
+        android:translationX="@dimen/margin_pause" />
+
+    <Button
+        android:id="@+id/okButton"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_gravity="right|center_vertical"
+        android:background="@null"
+        android:onClick="shoot"
+        android:translationX="@dimen/margin_pause_neg" />
+
+</FrameLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.adelin.ledspad.MainActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_row="0"
+        app:srcCompat="@drawable/logo" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_row="1"
+        android:background="@null"
+        android:hint="@string/main_choose_sudo"
+        android:onClick="openSudoku"
+        android:textSize="18sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_row="2"
+        android:background="@null"
+        android:hint="@string/main_choose_snake"
+        android:onClick="openSnake"
+        android:textSize="18sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_row="3"
+        android:background="@null"
+        android:hint="@string/main_choose_space_invaders"
+        android:onClick="openSpaceInvaders"
+        android:textSize="18sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="5"
+        android:background="@null"
+        android:hint="@string/main_connect"
+        android:onClick="connectToWall"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp" />
+
+</GridLayout>

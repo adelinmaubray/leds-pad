@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.example.adelin.ledspad.Snake">>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|center_horizontal"
+        app:srcCompat="@drawable/croix_directionnelle" />
+
+    <ImageView
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_gravity="bottom"
+        android:translationX="@dimen/margin_pause"
+        app:srcCompat="@drawable/button_pause" />
+
+    <Button
+        android:id="@+id/up"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@null"
+        android:onClick="goUp" />
+
+    <Button
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@null"
+        android:onClick="goDown" />
+
+    <Button
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_gravity="center_vertical"
+        android:background="@null"
+        android:onClick="goLeft"
+        android:translationX="@dimen/activity_margin_pos" />
+
+    <Button
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_gravity="center_vertical|right"
+        android:background="@null"
+        android:onClick="goRight"
+        android:translationX="@dimen/activity_margin_neg" />
+
+    <Button
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_gravity="bottom"
+        android:background="@null"
+        android:onClick="pause"
+        android:translationX="@dimen/margin_pause" />
+
+</FrameLayout>

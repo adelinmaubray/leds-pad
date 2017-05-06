@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="button_size">91dp</dimen>
+
+    <dimen name="margin_pause">5dp</dimen>
+    <dimen name="margin_pause_neg">-5dp</dimen>
+
+    <dimen name="activity_margin_pos">140dp</dimen>
+    <dimen name="activity_margin_neg">-140dp</dimen>
+
+    <dimen name="button_sudoku_size">75dp</dimen>
+    <dimen name="activity_margin_sudoku">6dp</dimen>
+
+</resources>
