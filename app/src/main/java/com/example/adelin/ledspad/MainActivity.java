@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    @SuppressLint("NewApi")
     public void connectToWall() {
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -115,9 +114,11 @@ public class MainActivity extends AppCompatActivity {
                 public void onReceive(Context context, Intent intent) {
                     String action = intent.getAction();
                     Log.i("device", "new action" + action);
+
                     if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                         BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                         Log.i("device", "new device" + device.getName());
+
                         if ("loutrepi".equals(device.getName())) {
                             bluetoothAdapter.cancelDiscovery();
                             try {
