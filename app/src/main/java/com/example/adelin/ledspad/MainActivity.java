@@ -23,12 +23,11 @@ import java.util.UUID;
 
 // extend actionbar a bt
 public class MainActivity extends AppCompatActivity {
-    public static BluetoothSocket btSocket;
+    public static BluetoothSocket btSocket = null;
     BluetoothAdapter bluetoothAdapter;
     BroadcastReceiver bluetoothReceiver;
 
     boolean activate = false;
-    boolean connected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        bluetoothAdapter.cancelDiscovery();
         unregisterReceiver(bluetoothReceiver);
         if(activate == true) {
             if (bluetoothAdapter.isEnabled()) {
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void openSudoku(View view) {
 
-        if(connected == true) {
+        if(btSocket == null) {
             try {
 
                 btSocket.getOutputStream().write("1\n".getBytes());
@@ -73,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
      * Called when the user taps the Snake button
      */
     public void openSnake(View view) {
-        if(connected == true) {
+        if(btSocket == null) {
             try {
 
                 btSocket.getOutputStream().write("2\n".getBytes());
@@ -93,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
      */
     public void openSpaceInvaders(View view) {
 
-        if(connected == true) {
+        if(btSocket == null) {
             try {
 
-                btSocket.getOutputStream().write("2\n".getBytes());
+                btSocket.getOutputStream().write("3\n".getBytes());
                 btSocket.getOutputStream().flush();
                 startActivity(new Intent(this, SpaceInvaders.class));
             } catch (IOException e) {
