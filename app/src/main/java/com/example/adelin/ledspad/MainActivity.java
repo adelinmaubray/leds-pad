@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     @SuppressLint("NewApi")
     public void connectToWall() {
 
