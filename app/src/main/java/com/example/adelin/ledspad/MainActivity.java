@@ -11,17 +11,13 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.UUID;
 
 
-// import bt
 
-
-// extend actionbar a bt
 public class MainActivity extends AppCompatActivity {
     public static BluetoothSocket btSocket = null;
     BluetoothAdapter bluetoothAdapter;
@@ -46,10 +42,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Called when the user taps the Sudoku button
-     */
-    public void openSudoku(View view) {
+
+    public void openSudoku() {
 
         if(btSocket == null) {
             Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
@@ -66,10 +60,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Called when the user taps the Snake button
-     */
-    public void openSnake(View view) {
+
+    public void openSnake() {
         if(btSocket == null) {
             Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
         }
@@ -84,10 +76,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Called when the user taps the Space Invaders button
-     */
-    public void openSpaceInvaders(View view) {
+
+    public void openSpaceInvaders() {
 
         if(btSocket == null) {
             Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
@@ -104,19 +94,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("NewApi")
-    public void connectToWall(View view) {
 
+    @SuppressLint("NewApi")
+    public void connectToWall() {
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
             Toast.makeText(getApplicationContext(), "Pas de Bluetooth", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getApplicationContext(), "Bluetooth possible", Toast.LENGTH_SHORT).show();
+        }
+
+        else {
+            Toast.makeText(getApplicationContext(), "Connexion...", Toast.LENGTH_SHORT).show();
             if (!bluetoothAdapter.isEnabled()) {
-                bluetoothAdapter.enable(); //ajouter message
+                bluetoothAdapter.enable();
                 activate = true;
             }
+
             bluetoothReceiver = new BroadcastReceiver() {
                 public void onReceive(Context context, Intent intent) {
                     String action = intent.getAction();
@@ -131,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                                 btSocket = device.createInsecureRfcommSocketToServiceRecord(UUID.fromString("94f39d29-7d6d-437d-973b-fba39e49d4ee"));
                                 btSocket.connect();
                                 Log.i("device", "connected to " + device.getName());
-                                Toast.makeText(getApplicationContext(), "Connecté au mur !", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Connecté à l'écran !", Toast.LENGTH_SHORT).show();
 
                             } catch (IOException e) {
                                 Log.e("device", "i messed up ", e);
@@ -142,10 +135,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
+
             IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
             registerReceiver(bluetoothReceiver, filter);
             bluetoothAdapter.startDiscovery();
-
 
         }
     }
