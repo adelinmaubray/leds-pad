@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
     public void openSudoku(View view) {
 
         if(btSocket == null) {
+            Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
+        }
+        else{
             try {
 
                 btSocket.getOutputStream().write("1\n".getBytes());
@@ -61,10 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        else{
-            Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
-        }
-
     }
 
     /**
@@ -72,17 +71,16 @@ public class MainActivity extends AppCompatActivity {
      */
     public void openSnake(View view) {
         if(btSocket == null) {
+            Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
+        }
+        else{
             try {
-
                 btSocket.getOutputStream().write("2\n".getBytes());
                 btSocket.getOutputStream().flush();
                 startActivity(new Intent(this, Snake.class));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else{
-            Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -92,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
     public void openSpaceInvaders(View view) {
 
         if(btSocket == null) {
+            Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
+        }
+        else{
             try {
 
                 btSocket.getOutputStream().write("3\n".getBytes());
@@ -100,9 +101,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else{
-            Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -137,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
                             } catch (IOException e) {
                                 Log.e("device", "i messed up ", e);
+                                Toast.makeText(getApplicationContext(), "Connexion échouée", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -146,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
             IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
             registerReceiver(bluetoothReceiver, filter);
             bluetoothAdapter.startDiscovery();
-            Log.i("device", "trolololo je suis nouveau");
 
 
         }
