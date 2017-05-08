@@ -30,7 +30,7 @@ public class Sudoku extends AppCompatActivity {
         super.onStop();
         if (MainActivity.wantPause == true) {
             try {
-                MainActivity.btSocket.getOutputStream().write("stopSud\n".getBytes());
+                MainActivity.btSocket.getOutputStream().write("s\n".getBytes());
                 MainActivity.btSocket.getOutputStream().flush();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -43,7 +43,7 @@ public class Sudoku extends AppCompatActivity {
         super.onResume();
         if(MainActivity.wantPause == true) {
             try {
-                MainActivity.btSocket.getOutputStream().write("Sudo resume\n".getBytes());
+                MainActivity.btSocket.getOutputStream().write("s\n".getBytes());
                 MainActivity.btSocket.getOutputStream().flush();
             } catch (IOException e) {
                 e.printStackTrace();
