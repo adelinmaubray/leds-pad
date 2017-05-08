@@ -126,7 +126,12 @@ public class MainActivity extends AppCompatActivity {
                                 btSocket.connect();
                                 Log.i("device", "connected to " + device.getName());
                                 if(btSocket != null) {
+                                    Log.i("device", "OUIIII");
                                     Toast.makeText(getApplicationContext(), "Connecté à l'écran !", Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    Log.i("device", "NOOOON");
+                                    Toast.makeText(getApplicationContext(), "Connexion échouée", Toast.LENGTH_SHORT).show();
                                 }
 
                             } catch (IOException e) {
@@ -143,11 +148,7 @@ public class MainActivity extends AppCompatActivity {
             registerReceiver(bluetoothReceiver, filter);
             bluetoothAdapter.startDiscovery();
             Log.i("start","Begining search");
-
-            if(btSocket == null){
-                Toast.makeText(getApplicationContext(), "Connexion échouée", Toast.LENGTH_SHORT).show();
-            }
-
+            
         }
     }
 
