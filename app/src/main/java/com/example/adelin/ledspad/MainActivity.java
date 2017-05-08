@@ -21,10 +21,12 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
     public static BluetoothSocket btSocket = null;
-    BluetoothAdapter bluetoothAdapter;
-    BroadcastReceiver bluetoothReceiver;
-
-    boolean activate = false;
+    BluetoothAdapter bluetoothAdapter = null;
+    BroadcastReceiver bluetoothReceiver = null;
+    
+    public static boolean wantPause = false;
+    //boolean activateReceiver = false;
+    boolean activateBluetooth = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +38,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(bluetoothReceiver);
-        if(activate == true) {
+        if(activateBluetooth == true) {
             if (bluetoothAdapter.isEnabled()) {
                 bluetoothAdapter.disable();
             }
         }
+        try {
+            MainActivity.btSocket.getOutputStream().write("s\nq\n".getBytes());
+            MainActivity.btSocket.getOutputStream().flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 
     public void openSudoku(View view) {
 
@@ -54,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
                 btSocket.getOutputStream().write("1\n".getBytes());
                 btSocket.getOutputStream().flush();
+                wantPause = false;
                 startActivity(new Intent(this, Sudoku.class));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -70,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 btSocket.getOutputStream().write("2\n".getBytes());
                 btSocket.getOutputStream().flush();
+                wantPause = false;
                 startActivity(new Intent(this, Snake.class));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -88,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
                 btSocket.getOutputStream().write("3\n".getBytes());
                 btSocket.getOutputStream().flush();
+                wantPause = false;
                 startActivity(new Intent(this, SpaceInvaders.class));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -98,6 +108,14 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("NewApi")
     public void connectToWall(View view) {
+        if(bluetoothReceiver != null){
+            bluetoothReceiver = null;
+        }
+
+        if(bluetoothAdapter != null){
+            bluetoothAdapter = null;
+        }
+
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
@@ -108,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Connexion...", Toast.LENGTH_SHORT).show();
             if (!bluetoothAdapter.isEnabled()) {
                 bluetoothAdapter.enable();
-                activate = true;
+                activateBluetooth = true;
             }
 
             bluetoothReceiver = new BroadcastReceiver() {
@@ -148,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
             registerReceiver(bluetoothReceiver, filter);
             bluetoothAdapter.startDiscovery();
             Log.i("start","Begining search");
-            
+
         }
     }
 
