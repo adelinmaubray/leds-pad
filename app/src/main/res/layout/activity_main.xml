@@ -7,19 +7,29 @@
     android:orientation="vertical"
     tools:context="com.example.adelin.ledspad.MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:text="LEDs' pad"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:textSize="28dp"
+        android:gravity="center"
+        />
+
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_row="0"
+        android:layout_row="1"
         app:srcCompat="@drawable/logo" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_row="1"
+        android:layout_row="2"
         android:background="@null"
         android:hint="@string/main_choose_sudo"
         android:onClick="openSudoku"
@@ -29,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_row="2"
+        android:layout_row="3"
         android:background="@null"
         android:hint="@string/main_choose_snake"
         android:onClick="openSnake"
@@ -39,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_row="3"
+        android:layout_row="4"
         android:background="@null"
         android:hint="@string/main_choose_space_invaders"
         android:onClick="openSpaceInvaders"
@@ -48,7 +58,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="5"
+        android:layout_row="6"
         android:background="@null"
         android:hint="@string/main_connect"
         android:onClick="connectToWall"

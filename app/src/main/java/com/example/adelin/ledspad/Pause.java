@@ -3,7 +3,8 @@ package com.example.adelin.ledspad;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
+
+import java.io.IOException;
 
 /**
  * Created by Adelin on 29/04/2017.
@@ -23,13 +24,24 @@ public class Pause extends AppCompatActivity {
     }
 
     public void back(View view) {
+        try {
+            MainActivity.btSocket.getOutputStream().write("s\n".getBytes());
+            MainActivity.btSocket.getOutputStream().flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         finish();
     }
 
     public void goToMain(View view) {
-        Toast.makeText(getApplicationContext(), "Retour menu", Toast.LENGTH_SHORT).show();
+        try {
+            MainActivity.btSocket.getOutputStream().write("q\n".getBytes());
+            MainActivity.btSocket.getOutputStream().flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         setResult(1);
-        this.finish();
+        finish();
     }
 
 

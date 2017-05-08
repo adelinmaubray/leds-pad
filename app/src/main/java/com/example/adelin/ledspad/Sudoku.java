@@ -70,7 +70,7 @@ public class Sudoku extends AppCompatActivity {
         }
     }
 
-    public void goDown(View view {
+    public void goDown(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("d\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();

@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             bluetoothReceiver = new BroadcastReceiver() {
                 public void onReceive(Context context, Intent intent) {
                     String action = intent.getAction();
-                    Log.i("device", "new action" + action);
+                    Log.i("action", "C'est parti !" + action);
                     if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                         BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                         Log.i("device", "new device" + device.getName());
@@ -125,7 +125,9 @@ public class MainActivity extends AppCompatActivity {
                                 btSocket = device.createInsecureRfcommSocketToServiceRecord(UUID.fromString("94f39d29-7d6d-437d-973b-fba39e49d4ee"));
                                 btSocket.connect();
                                 Log.i("device", "connected to " + device.getName());
-                                Toast.makeText(getApplicationContext(), "Connecté à l'écran !", Toast.LENGTH_SHORT).show();
+                                if(btSocket != null) {
+                                    Toast.makeText(getApplicationContext(), "Connecté à l'écran !", Toast.LENGTH_SHORT).show();
+                                }
 
                             } catch (IOException e) {
                                 Log.e("device", "i messed up ", e);
@@ -140,6 +142,11 @@ public class MainActivity extends AppCompatActivity {
             IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
             registerReceiver(bluetoothReceiver, filter);
             bluetoothAdapter.startDiscovery();
+            Log.i("start","Begining search");
+
+            if(btSocket == null){
+                Toast.makeText(getApplicationContext(), "Connexion échouée", Toast.LENGTH_SHORT).show();
+            }
 
         }
     }
