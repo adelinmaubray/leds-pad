@@ -3,6 +3,7 @@ package com.example.adelin.ledspad;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
 
 import java.io.IOException;
@@ -56,11 +57,11 @@ public class Sudoku extends AppCompatActivity {
         }
     }
 
-    public void openNumWin() {
+    public void openNumWin(View view) {
         startActivity(new Intent(this, SudokuNum.class));
     }
 
-    public void goUp() {
+    public void goUp(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("u\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -69,7 +70,7 @@ public class Sudoku extends AppCompatActivity {
         }
     }
 
-    public void goDown() {
+    public void goDown(View view {
         try {
             MainActivity.btSocket.getOutputStream().write("d\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -78,7 +79,7 @@ public class Sudoku extends AppCompatActivity {
         }
     }
 
-    public void goLeft() {
+    public void goLeft(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("l\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -87,7 +88,7 @@ public class Sudoku extends AppCompatActivity {
         }
     }
 
-    public void goRight() {
+    public void goRight(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("r\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -96,7 +97,7 @@ public class Sudoku extends AppCompatActivity {
         }
     }
 
-    public void pause() {
+    public void pause(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("s\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();

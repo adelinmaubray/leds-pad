@@ -3,6 +3,7 @@ package com.example.adelin.ledspad;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
 
 import java.io.IOException;
@@ -57,7 +58,7 @@ public class SpaceInvaders extends AppCompatActivity {
         }
     }
 
-    public void shoot() {
+    public void shoot(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("f\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -66,7 +67,7 @@ public class SpaceInvaders extends AppCompatActivity {
         }
     }
 
-    public void goLeft() {
+    public void goLeft(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("l\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -75,7 +76,7 @@ public class SpaceInvaders extends AppCompatActivity {
         }
     }
 
-    public void goRight() {
+    public void goRight(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("r\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -84,7 +85,7 @@ public class SpaceInvaders extends AppCompatActivity {
         }
     }
 
-    public void pause() {
+    public void pause(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("s\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();

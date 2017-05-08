@@ -2,6 +2,7 @@ package com.example.adelin.ledspad;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
 
 import java.io.IOException;
@@ -46,11 +47,11 @@ public class SudokuNum extends AppCompatActivity {
     }
 
 
-    public void openSudoku() {
+    public void openSudoku(View view) {
         finish();
     }
 
-    public void sendZero(){
+    public void sendZero(View view){
         try {
             MainActivity.btSocket.getOutputStream().write("0\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -59,7 +60,7 @@ public class SudokuNum extends AppCompatActivity {
         }
     }
 
-    public void sendOne() {
+    public void sendOne(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("1\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -69,7 +70,7 @@ public class SudokuNum extends AppCompatActivity {
         finish();
     }
 
-    public void sendTwo() {
+    public void sendTwo(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("2\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -79,7 +80,7 @@ public class SudokuNum extends AppCompatActivity {
         finish();
     }
 
-    public void sendThree() {
+    public void sendThree(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("3\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -89,7 +90,7 @@ public class SudokuNum extends AppCompatActivity {
         finish();
     }
 
-    public void sendFour() {
+    public void sendFour(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("4\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -99,7 +100,7 @@ public class SudokuNum extends AppCompatActivity {
         finish();
     }
 
-    public void sendFive() {
+    public void sendFive(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("5\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -109,7 +110,7 @@ public class SudokuNum extends AppCompatActivity {
         finish();
     }
 
-    public void sendSix() {
+    public void sendSix(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("6\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -119,7 +120,7 @@ public class SudokuNum extends AppCompatActivity {
         finish();
     }
 
-    public void sendSeven() {
+    public void sendSeven(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("7\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -129,7 +130,7 @@ public class SudokuNum extends AppCompatActivity {
         finish();
     }
 
-    public void sendEight() {
+    public void sendEight(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("8\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();
@@ -139,7 +140,7 @@ public class SudokuNum extends AppCompatActivity {
         finish();
     }
 
-    public void sendNine() {
+    public void sendNine(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("9\n".getBytes());
             MainActivity.btSocket.getOutputStream().flush();

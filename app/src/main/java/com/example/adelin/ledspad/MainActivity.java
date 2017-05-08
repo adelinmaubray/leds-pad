@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void openSudoku() {
+    public void openSudoku(View view) {
 
         if(btSocket == null) {
             Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void openSnake() {
+    public void openSnake(View view) {
         if(btSocket == null) {
             Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
         }
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void openSpaceInvaders() {
+    public void openSpaceInvaders(View view) {
 
         if(btSocket == null) {
             Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @SuppressLint("NewApi")
-    public void connectToWall() {
+    public void connectToWall(View view) {
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
