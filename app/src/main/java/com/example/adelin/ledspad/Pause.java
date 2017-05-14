@@ -23,6 +23,7 @@ public class Pause extends AppCompatActivity {
 
     }
 
+    // Revenir au jeu
     public void back(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("s\n".getBytes());
@@ -33,6 +34,7 @@ public class Pause extends AppCompatActivity {
         finish();
     }
 
+    // Revenir au Menu Principal
     public void goToMain(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("q\n".getBytes());
