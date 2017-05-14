@@ -42,6 +42,7 @@ public class Pause extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // Pour fermer l'activité précédente
         setResult(1);
         finish();
     }
