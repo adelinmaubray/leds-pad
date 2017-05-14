@@ -24,6 +24,9 @@ public class SpaceInvaders extends AppCompatActivity {
     @Override
     public void onBackPressed() {
     }
+
+    // On fait pause quand l'activité d'arrête
+    // Mais pas si on passe dans un autre activité (pour ne pas envoyer un signal pour rien
     @Override
     protected void onStop() {
         super.onStop();
@@ -37,6 +40,8 @@ public class SpaceInvaders extends AppCompatActivity {
         }
     }
 
+    // On arrête la pause quand l'activité redémarre
+    // Mais pas si c'est la première fois qu'elle s'affiche
     @Override
     protected void onResume() {
         super.onResume();
@@ -50,6 +55,9 @@ public class SpaceInvaders extends AppCompatActivity {
         }
         MainActivity.wantPause = true;
     }
+
+    //Réponse à l'activité for startActivityForResult
+    // On finish() l'activité quand le Menu Pause s'arrête
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1000) {
@@ -87,6 +95,7 @@ public class SpaceInvaders extends AppCompatActivity {
         }
     }
 
+    //Afficher Menu Pause
     public void pause(View view) {
         try {
             MainActivity.btSocket.getOutputStream().write("s\n".getBytes());
