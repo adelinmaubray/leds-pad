@@ -20,12 +20,14 @@ import java.util.UUID;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    // Variables pour le Bluetooth
     public static BluetoothSocket btSocket = null;
     BluetoothAdapter bluetoothAdapter = null;
     BroadcastReceiver bluetoothReceiver = null;
-    
+
+    // Variables de choix
     public static boolean wantPause = false;
-    //boolean activateReceiver = false;
     boolean activateBluetooth = false;
 
     @Override
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // Supression des variables Bluetooth
         unregisterReceiver(bluetoothReceiver);
         if(activateBluetooth == true) {
             if (bluetoothAdapter.isEnabled()) {
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Lancer le Sudoku
     public void openSudoku(View view) {
 
         if(btSocket == null) {
@@ -69,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    // Ouvrir le Snake
     public void openSnake(View view) {
         if(btSocket == null) {
             Toast.makeText(getApplicationContext(), "Il faut se connecter", Toast.LENGTH_SHORT).show();
@@ -87,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // Ouvrir Space Invaders
     public void openSpaceInvaders(View view) {
 
         if(btSocket == null) {
@@ -106,8 +111,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // Connexion Bluetooth
     @SuppressLint("NewApi")
     public void connectToWall(View view) {
+
+        // Réinitialisation des variables
         if(bluetoothReceiver != null){
             bluetoothReceiver = null;
         }
@@ -117,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        // Y a-t-il un Bluetooth compatible ?
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
             Toast.makeText(getApplicationContext(), "Pas de Bluetooth", Toast.LENGTH_SHORT).show();
@@ -124,23 +133,28 @@ public class MainActivity extends AppCompatActivity {
 
         else {
             Toast.makeText(getApplicationContext(), "Connexion...", Toast.LENGTH_SHORT).show();
+            // Si le Bluetooth est éteint, on l'allume
             if (!bluetoothAdapter.isEnabled()) {
                 bluetoothAdapter.enable();
                 activateBluetooth = true;
             }
 
+            // Création du BroadcastReceiver
             bluetoothReceiver = new BroadcastReceiver() {
                 public void onReceive(Context context, Intent intent) {
                     String action = intent.getAction();
                     Log.i("action", "C'est parti !" + action);
                     if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                        // Parcourt de la liste de device détectable
                         BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                         Log.i("device", "new device" + device.getName());
-                        if ("loutrepi".equals(device.getName())) {
+                        if ("loutrepi".equals(device.getName())) { // à modifier en fonction du server
                             bluetoothAdapter.cancelDiscovery();
                             try {
                                 Log.i("device", "trying connect to " + device.getName());
-                                btSocket = device.createInsecureRfcommSocketToServiceRecord(UUID.fromString("94f39d29-7d6d-437d-973b-fba39e49d4ee"));
+                                // Création du Socket
+                                btSocket = device.createInsecureRfcommSocketToServiceRecord(UUID.fromString("94f39d29-7d6d-437d-973b-fba39e49d4ee")); // à modifier en fonction du server
+                                // Connexion
                                 btSocket.connect();
                                 Log.i("device", "connected to " + device.getName());
                                 if(btSocket != null) {
@@ -164,6 +178,7 @@ public class MainActivity extends AppCompatActivity {
 
             IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
             registerReceiver(bluetoothReceiver, filter);
+            // Activation de le Recherche
             bluetoothAdapter.startDiscovery();
             Log.i("start","Begining search");
 
