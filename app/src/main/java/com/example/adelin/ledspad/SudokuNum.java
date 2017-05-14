@@ -56,6 +56,7 @@ public class SudokuNum extends AppCompatActivity {
     }
     */
 
+    // Revenir à l'écran du la manette du Sudoku
     public void openSudoku(View view) {
         MainActivity.wantPause = false;
         finish();
